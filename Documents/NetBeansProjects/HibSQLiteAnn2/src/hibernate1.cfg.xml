@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+ 
+<hibernate-configuration>
+ 
+    <session-factory> 
+      <!-- Database connection settings -->
+    <property name="hibernate.connection.driver_class">org.sqlite.JDBC</property>
+    <property name="hibernate.connection.url">
+        jdbc:sqlite:C:\Users\Alexander\Documents\NetBeansProjects\HibSQLiteAnn2\src\Resource\Loto49.db
+    </property>
+    <property name="connection.username">root</property>
+      <!-- SQL dialect -->
+    <property name="dialect">dialect.SQLiteDialect</property> 
+      <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">true</property>        
+       <property name="hibernate.hbm2ddl.auto">update</property> 
+      <!-- Mapping files -->
+    <mapping class="hibsqliteann.Dann"/> 
+    </session-factory>
+ 
+</hibernate-configuration>       
