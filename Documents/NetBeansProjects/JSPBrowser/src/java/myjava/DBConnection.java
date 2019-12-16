@@ -19,13 +19,12 @@ public class DBConnection
 
     public static Connection getConnection() 
     {
-
         if(connection == null)
         {   
             try {
                  Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
                  String connectionString = "jdbc:mysql://localhost:3306/" + DB_NAME +
-                    "?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+                    "?useLegacyDatetimeCode=false&serverTimezone=UTC";
                 connection = DriverManager.getConnection(connectionString ,DB_USER ,DB_PASS);
                 connection.createStatement().execute("CREATE TABLE " +
                     "IF NOT EXISTS browser_visit(id INT NOT NULL AUTO_INCREMENT," +

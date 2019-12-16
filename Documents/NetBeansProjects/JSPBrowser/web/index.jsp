@@ -4,6 +4,7 @@
     Author     : Alexander
 --%>
 
+<%@page import="java.util.GregorianCalendar"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.sql.Timestamp"%>
 <%@page import="myjava.WorkMySql"%>
@@ -48,10 +49,14 @@
     <br/><br/>
 <table style="border: 2px solid; border-collapse: collapse">                  
  <%         Map<String,Integer> sostav = workSQL.getVisits();
-          for(Map.Entry<String, Integer> entry : sostav.entrySet()) { %>
+///            Map <String, GregorianCalendar> lastTime = workSQL.getLastVisits();
+          for(Map.Entry<String, Integer> entry : sostav.entrySet()) {
+///              Map.Entry<String, Integer> entry1 = entry.getKey(); 
+ %>
      <tr>
          <td style="border: 2px solid; padding: 5px"> <%= entry.getKey() %> </td>
          <td style="border: 2px solid; padding: 5px; text-align: right;"> <%= entry.getValue() %> </td>
+  <!--       <td style="border: 2px solid; padding: 5px"> <%= entry.getValue() %> </td> -->
      </tr>    
  <%         } 
  %>

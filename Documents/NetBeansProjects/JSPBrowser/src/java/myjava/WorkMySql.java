@@ -1,8 +1,12 @@
 package myjava;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -47,7 +51,7 @@ public class WorkMySql {
         int count = 0;
         String sql = "";
         try {
-            sql = "SELECT COUNT(*) FROM browser_visit;";
+            sql = "SELECT COUNT(*) FROM browser_visit ORDER BY browser ;";
             ResultSet rs = connect.createStatement().executeQuery(sql);
             rs.next();
             count = rs.getInt(1);
@@ -72,4 +76,22 @@ public class WorkMySql {
         }
         return count;
     }
+    
+//        public Map<String, BrowserData> getLastVisits() {
+//        Map<String, BrowserData> lastDate = new HashMap<String, BrowserData>();
+//        GregorianCalendar calendar = new GregorianCalendar();
+//        String sql = "";
+//        try {
+//            sql = "SELECT `browser`, MAX(`time`) FROM browser_visit GROUP BY `browser`;";
+//            ResultSet rs = connect.createStatement().executeQuery(sql);
+//            while(rs.next()){
+//              calendar.setTime(rs.getDate(2));  
+//              lastDate.put(rs.getString(1),new BrowserData(rs.getDate(1),
+//                                                   calendar.setTime(rs.getDate(2)));
+//            }
+//        } catch (Exception ex) {
+//            Logger.getLogger(WorkMySql.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return lastDate;
+//    }
 }
