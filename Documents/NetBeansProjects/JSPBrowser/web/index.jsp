@@ -40,9 +40,14 @@
                     browser = "GoogleChrome"; 
                 }else {
                     browser = "Unknown"; 
-                }
-//                workSQL.addVisit(browser);
-            }
+                } %>
+
+      <br>  <%= browser %><br>
+        
+        <% boolean res = workSQL.addVisit(browser);%>
+                    <%= res %>
+        <%    }
+
         } %>
     <br/><br/>
 <table style="border: 2px solid; border-collapse: collapse">                  
