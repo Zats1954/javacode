@@ -17,8 +17,7 @@ class DBConnection
         if(connection == null)
         {   
             try {
-                DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-                connection = DriverManager.getConnection(
+                     connection = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/" + dbName +
                     "?user=" + dbUser + "&password=" + dbPass);
                 connection.createStatement().execute("CREATE TABLE " +
