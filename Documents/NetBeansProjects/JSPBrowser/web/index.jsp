@@ -20,7 +20,7 @@
     </head>
     <body>
         <h1>Browser's statistic</h1>
-<%! WorkMySql workSQL = new WorkMySql(); %>
+<%! WorkMySql workSQL = new WorkMySql();%> 
 <% long time = new Date().getTime(); %>
 <%      Enumeration headerNames = request.getHeaderNames();
         while (headerNames.hasMoreElements()) {
@@ -40,13 +40,9 @@
                     browser = "GoogleChrome"; 
                 }else {
                     browser = "Unknown"; 
-                } %>
-
-      <br>  <%= browser %><br>
-        
-        <% boolean res = workSQL.addVisit(browser);%>
-                    <%= res %>
-        <%    }
+                } 
+                workSQL.addVisit(browser);
+            }
 
         } %>
     <br/><br/>

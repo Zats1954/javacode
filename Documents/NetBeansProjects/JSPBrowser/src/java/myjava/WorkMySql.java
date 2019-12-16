@@ -19,7 +19,8 @@ public class WorkMySql {
     public WorkMySql() {
         try {
             connect = DBConnection.getConnection();
-        } catch (ClassNotFoundException ex) {
+            connect.setAutoCommit(true);
+        } catch (SQLException ex) {
             Logger.getLogger(WorkMySql.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -33,16 +34,14 @@ public class WorkMySql {
 //         }
 //    }
 
-    public boolean addVisit(String browser) throws SQLException {
-//        String sql = " INSERT INTO browser_visit(`time`,`browser`) VALUES(NOW(),'" + browser + "');";
- String sql = " INSERT INTO browser_visit(`browser`) VALUES('" + browser + "');";       
+    public void addVisit(String browser) throws SQLException {
+        String sql = " INSERT INTO browser_visit(`time`,`browser`) VALUES(NOW(),'" + browser + "');";
+// String sql = " INSERT INTO browser_visit(`browser`) VALUES('" + browser + "');";       
         try {
             connect.createStatement().execute(sql);
         } catch (Exception ex) {
             Logger.getLogger(WorkMySql.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
         }
-        return true;
     }
 
     public int allVisits() {
