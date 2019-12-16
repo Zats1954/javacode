@@ -36,7 +36,6 @@ public class WorkMySql {
 
     public void addVisit(String browser) throws SQLException {
         String sql = " INSERT INTO browser_visit(`time`,`browser`) VALUES(NOW(),'" + browser + "');";
-// String sql = " INSERT INTO browser_visit(`browser`) VALUES('" + browser + "');";       
         try {
             connect.createStatement().execute(sql);
         } catch (Exception ex) {
@@ -54,7 +53,6 @@ public class WorkMySql {
             count = rs.getInt(1);
             rs.close();
         } catch (Exception ex) {
-            System.out.println(sql);
             Logger.getLogger(WorkMySql.class.getName()).log(Level.SEVERE, null, ex);
         }
         return count;
@@ -64,15 +62,12 @@ public class WorkMySql {
         Map<String, Integer> count = new HashMap<String, Integer>();
         String sql = "";
         try {
-            sql = "SELECT `browser`, COUNT(*) FROM browser_visit GROUP BY `browser` ;";
+            sql = "SELECT `browser`, COUNT(*) FROM browser_visit GROUP BY `browser`;";
             ResultSet rs = connect.createStatement().executeQuery(sql);
             while(rs.next()){
               count.put(rs.getString(1),rs.getInt(2));
             }
-//            rs.next();
-//            count = rs.getInt(1);
         } catch (Exception ex) {
-            System.out.println(sql);
             Logger.getLogger(WorkMySql.class.getName()).log(Level.SEVERE, null, ex);
         }
         return count;
