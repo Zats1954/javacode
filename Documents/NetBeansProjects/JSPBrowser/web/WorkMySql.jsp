@@ -50,16 +50,16 @@
 
     public Map<String, Integer> getVisits() {
         Map<String, Integer> count = new HashMap<>();
-        String sql = "";
         try {
-            sql = "SELECT `browser`, COUNT(*) FROM browser_visit GROUP BY `browser` ;";
+             String sql  = "SELECT `browser`, COUNT(*) FROM browser_visit GROUP BY `browser` ;";
             ResultSet rs = connect.createStatement().executeQuery(sql);
             while(rs.next()){
               count.put(rs.getString(1),rs.getInt(2));
             }
         } catch (SQLException ex) {
-            System.out.println(sql);
-            Logger.getLogger(WorkMySql.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Exception" + ex.getMessage());
+//            System.out.println(sql);
+//            Logger.getLogger(WorkMySql.class.getName()).log(Level.SEVERE, null, ex);
         }
         return count;
     }
