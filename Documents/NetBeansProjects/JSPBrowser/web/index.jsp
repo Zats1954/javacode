@@ -20,16 +20,18 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Browser's statistic</h1>
+        <h1>Browsers: visit statistics</h1>
+<% long time = new Date().getTime(); %>       
 <%! WorkMySql workSQL = new WorkMySql();%> 
-<% long time = new Date().getTime(); %>
-<%      Enumeration headerNames = request.getHeaderNames();
+<%  out.println(" Your IP address :" + request.getRemoteAddr()); %>
+<br/>
+<%        Enumeration headerNames = request.getHeaderNames();
         while (headerNames.hasMoreElements()) {
             String key = (String) headerNames.nextElement();
             String browser = "   ";
             if(key.equals("user-agent")){
                 String value = request.getHeader(key);
-                out.println(key + ":");
+                out.println("Your browser:");
                 out.println(value);
                 if( value.indexOf("Firefox") >-1 ){
                     browser = "Firefox";                    
@@ -56,16 +58,14 @@
      <tr>
          <td style="border: 2px solid; padding: 5px"> <%= entry.getKey() %> </td>
          <td style="border: 2px solid; padding: 5px; text-align: right;"> <%= entry.getValue() %> </td>
-  <!--       <td style="border: 2px solid; padding: 5px"> <%= entry.getValue() %> </td> -->
      </tr>    
  <%         } 
  %>
     </table>
     <hr/>
- Число посещений -  <%= workSQL.allVisits() %>
+ Count of all visits -  <%= workSQL.allVisits() %>
 
- <% long times = new Date().getTime() - time;%>
- Время - 
- <%= times %>
+ <% long times = new Date().getTime() - time;%><br/>
+ Server compilation time - <%= times %> msec
     </body>
 </html>

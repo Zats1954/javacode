@@ -14,8 +14,9 @@ public class DBConnection
     private static Connection connection = null;
 
     private static final String DB_NAME = "browser";
-    private static final String DB_USER = "root";
-    private static final String DB_PASS = "Zats1954";
+    private static final String DB_USER = "*******";
+    private static final String DB_PASS = "*******";
+
 
     public static Connection getConnection() 
     {

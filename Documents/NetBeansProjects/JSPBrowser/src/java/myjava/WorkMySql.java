@@ -1,3 +1,7 @@
+/**
+ *
+ * @author Alexander
+ */
 package myjava;
 
 import java.sql.Connection;
@@ -12,10 +16,6 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Alexander
- */
 public class WorkMySql {
 
     private  Connection connect;
@@ -28,15 +28,6 @@ public class WorkMySql {
             Logger.getLogger(WorkMySql.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-//    public static void main(String[] args) {
-//        WorkMySql mysql = new WorkMySql();
-//        System.out.println("count "+ mysql.allVisits());
-//        Map<String, Integer> count = mysql.getVisits();
-//         for(Map.Entry<String, Integer> entry : count.entrySet()) { 
-//             System.out.println(entry.getKey()+ " " + entry.getValue());
-//         }
-//    }
 
     public void addVisit(String browser) throws SQLException {
         String sql = " INSERT INTO browser_visit(`time`,`browser`) VALUES(NOW(),'" + browser + "');";
@@ -76,22 +67,4 @@ public class WorkMySql {
         }
         return count;
     }
-    
-//        public Map<String, BrowserData> getLastVisits() {
-//        Map<String, BrowserData> lastDate = new HashMap<String, BrowserData>();
-//        GregorianCalendar calendar = new GregorianCalendar();
-//        String sql = "";
-//        try {
-//            sql = "SELECT `browser`, MAX(`time`) FROM browser_visit GROUP BY `browser`;";
-//            ResultSet rs = connect.createStatement().executeQuery(sql);
-//            while(rs.next()){
-//              calendar.setTime(rs.getDate(2));  
-//              lastDate.put(rs.getString(1),new BrowserData(rs.getDate(1),
-//                                                   calendar.setTime(rs.getDate(2)));
-//            }
-//        } catch (Exception ex) {
-//            Logger.getLogger(WorkMySql.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return lastDate;
-//    }
 }

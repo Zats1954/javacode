@@ -5,12 +5,12 @@
  */
 package myjava;
 
-import java.util.GregorianCalendar;
-
 /**
  *
  * @author Alexander
  */
+import java.util.GregorianCalendar;
+
 public class BrowserData {
     private int countsBrowser;
     private GregorianCalendar lastTime;
