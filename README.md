@@ -1,1 +1,1 @@
-Copy content one database to another one with hibernate API
+Copies content one database SQLite to its analog MySQL with hibernate API
